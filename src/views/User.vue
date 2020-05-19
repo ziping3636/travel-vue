@@ -1,6 +1,6 @@
 <template>
 	<div>
-		user
+		user2
 	</div>
 </template>
 
