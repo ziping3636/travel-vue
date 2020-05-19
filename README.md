@@ -1,4 +1,4 @@
-# boot16
+# travelvue
 
 ## Project setup
 ```
