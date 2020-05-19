@@ -13,41 +13,42 @@ Vue.use(VueRouter)
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import('../views/About.vue')
   },
   {
     path: '/pageone',
     name: 'Pageone',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Pageone.vue')
+    component: () => import('../views/Pageone.vue')
   },
   {
     path: '/hello',
     name: 'Hello',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Hello.vue')
+    component: () => import( '../views/Hello.vue')
   },
   {
     path: '/classes',
     name: 'Classes',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Classes.vue')
+    component: () => import( '../views/Classes.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Register.vue')
+    component: () => import( '../views/Register.vue')
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import( '../views/Admin.vue')
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: () => import( '../views/User.vue')
   }
 ]
 
