@@ -4,7 +4,7 @@
 			<el-form ref="rules" :model="loginModel" :rules="rules" label-width="80px" class="login-box">
 				<h3 class="login-title">XXX旅游账号登录</h3>
 
-				<el-form-item label="账号" prop="username">
+				<el-form-item label="用户名" prop="username">
 					<el-input type="text" placeholder="请输入账号" v-model="loginModel.username" />
 				</el-form-item>
 
@@ -58,11 +58,18 @@
 					if (res.data.code == 1001) {
 						if (res.data.data.isMark == 0) {
 							this.$router.push({
-								path: "/admin"
+								path: "/admin",
+								query: {
+									adminId: res.data.data.id,
+									adminName: res.data.data.name
+								}
 							});
 						} else if (res.data.data.isMark == 1) {
 							this.$router.push({
-								path: "/user"
+								path: "/user",
+								query: {
+									user: res.data.data
+								}
 							});
 						} else {
 							this.$message.error("数据异常，请联系管理员");
