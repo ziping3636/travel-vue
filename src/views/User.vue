@@ -1,10 +1,21 @@
 <template>
 	<div>
-		user2
+		user:{{username}}
 	</div>
 </template>
 
 <script>
+	export default{
+		data:{
+			username:''
+		},
+		created() {
+			this.username  = this.$store.state.user.username;
+		},
+		methods:{
+			
+		}
+	}
 </script>
 
 <style>

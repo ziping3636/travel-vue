@@ -28,9 +28,9 @@
 			</el-table-column>
 			<el-table-column label="操作">
 				<template slot-scope="scope">
-					<el-button icon="el-icon-info" size="small" type="primary" plain>详情</el-button>
-					<el-button icon="el-icon-info" size="small" type="danger" plain>详情</el-button>
-					<el-button icon="el-icon-info" size="small" type="success" plain>详情</el-button>
+					<el-button icon="el-icon-info" size="small" @click="getInfo(scope.row)" type="primary" plain>详情</el-button>
+					<el-button icon="el-icon-close" size="small" type="danger" @click="updateStatus(scope.row,0)" plain v-if="scope.row.status==1">封号禁用</el-button>
+					<el-button icon="el-icon-check" size="small" type="success" @click="updateStatus(scope.row,1)" plain v-if="scope.row.status==0">解封</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -38,6 +38,20 @@
 		 :page-sizes="sizes" :page-size="searchUser.size" layout="total, sizes, prev, pager, next, jumper" :total="total"
 		 background>
 		</el-pagination>
+
+
+
+		<el-dialog title="用户信息" :visible.sync="userInfo" width="30%">
+			<span>
+				<el-avatar :src="user.portrait"></el-avatar><br><br>
+				姓名：{{user.name}}<br><br>
+				用户名：{{user.username}}<br><br>
+				手机号：{{user.phone}}<br><br>
+			</span>
+			<!-- <span slot="footer" class="dialog-footer">
+				
+			</span> -->
+		</el-dialog>
 	</div>
 </template>
 
@@ -48,6 +62,8 @@
 				tableData: [],
 				sizes: [3, 5],
 				total: 0,
+				user: '',
+				userInfo: false,
 				searchUser: {
 					current: 1,
 					size: 5,
@@ -74,6 +90,29 @@
 			handleSizeChange(val) {
 				this.searchUser.size = val;
 				this.initData();
+			},
+			getInfo(row) {
+				this.axios.get("http://localhost:92/user/findById", {
+					params: {
+						id: row.id
+					}
+				}).then((res) => {
+					this.user = res.data.data;
+					this.userInfo = true;
+				})
+			},
+			updateStatus(row, status) {
+				this.axios.get("http://localhost:92/user/updateUserById", {
+					params: {
+						id: row.id,
+						status: status
+					}
+				}).then((res) => {
+					if (res.data.code == 1001) {
+						alert("修改成功")
+						this.initData();
+					}
+				})
 			},
 		}
 	}

@@ -18,6 +18,9 @@
 
 
 			</el-form>
+			<div class="bottom-link">
+				<font style="color: white;">没有账号？</font><router-link :to="{path:'/register'}"><font style="color: yellow;">去注册</font></router-link>
+			</div>
 		</div>
 	</div>
 </template>
@@ -64,6 +67,7 @@
 									adminName: res.data.data.name
 								}
 							});
+							 this.$store.commit('username',res.data.data.name);
 						} else if (res.data.data.isMark == 1) {
 							this.$router.push({
 								path: "/user",
@@ -112,5 +116,18 @@
 		text-align: center;
 		margin: 0 auto 40px auto;
 		color: #303133;
+	}
+	
+	.bottom-link {
+		width: 140px;
+		margin: 10px auto;
+		/* background-color: #000; */
+		border-radius: 15px;
+		background-color: rgba(0, 0, 0, .2);
+		text-align: center;
+		font-size: 12px;
+		color: #fff;
+		padding: 4px 0;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, .4);
 	}
 </style>
