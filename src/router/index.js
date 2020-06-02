@@ -42,19 +42,19 @@ const routes = [{
 	{
 		path: '/admin',
 		name: 'Admin',
-		component: () => import('../views/Admin.vue'),
+		component: () => import('../views/admin/Admin.vue'),
 		children: [{
 			path: '/userList',
 			name: 'UserList',
-			component: () => import('../views/UserList.vue')
+			component: () => import('../views/admin/UserList.vue')
 		},{
 			path: '/scenicList',
 			name: 'ScenicList',
-			component: () => import('../views/ScenicList.vue')
+			component: () => import('../views/admin/ScenicList.vue')
 		},{
 			path: '/blogList',
 			name: 'BlogList',
-			component: () => import('../views/BlogList.vue')
+			component: () => import('../views/admin/BlogList.vue')
 		}]
 	},
 	{
